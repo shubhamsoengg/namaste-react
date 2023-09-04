@@ -6,6 +6,20 @@
 - The order of the script tags in the html matters here. if the App.js is imported before the cdn links, it will throw an error.
 - If there is something already in the root in html file, it will get replaced (not appended) by element in the react code.
 
+--------------------------------
+Core react without JSX: 
+
+const child = React.createElement("h2", { id: "child" }, "I am h2 tag");
+const sibling = React.createElement("h2", { id: "sibling" }, "I am a sibling");
+const parent = React.createElement("div", { id: "parent" }, [child, sibling]);
+
+console.log(parent); // returns a javascript object
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(parent); // convert the object to h1 tag to render it on screen.
+---------------------------------
+
+
 # Homework questions
 
 ## CDN - Content delivery metworks:

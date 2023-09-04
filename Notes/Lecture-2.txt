@@ -1,0 +1,30 @@
+# Notes: 
+- package.json is a configuration file for the npm. keeps approx versions of dependencies. 
+- parcel is a bundler
+- react is not the only thing that makes the app fast
+- 2 types of dependencies: dev dependency, normal dependency
+- dev dependencies: required only in the development phase
+- normal dependencies: used in production. 
+- we will install parcel as a dev dependency as whatever minification, optimisation, chunking is to be done, it will be done not on prod but on dev env. 
+Then we ship that to prod. 
+- "parcel": "^2.9.3": the caret means parcel will automatically upgrade the minor version (e.g: 2.8.4) once it comes up. if ~ used, 
+then the major version will get updated which might break things which is why it is a good idea to use ^. 
+- package-lock.json: keeps a track of exact version that is installed. 
+- transitive dependencies: parcel is also inturn dependent on other dependencies. 
+- we don't want to put everything on github. We use gitignore file to ignore files. Mostly node_modules. We can recreate using package.json by just "npm install" 
+- both package.json and package.lock.json should be pushed to github. 
+- npx: executing a package (npx parcel index.html).
+- cdns are not a good way: 
+    1. costly operation
+    2. if the version changes then the url needs to be changed. 
+- we cannot use import in browser scripts. 
+- Parcel: 
+    - creates a local server. 
+    - creates dev build
+    - HMR: hot module replacement. Refreshes browser on save. Parcel uses a file watching algorithm written in c++ to watch this. 
+    - parcel caches things giving us faster builds (.parcel-cache). 
+    - image optimization. 
+    - minify, bundle, code splitting, differential bundling(to support older browser), consistent hashing, better error views. 
+    - tree shaking: remove unused code, functions, random code. 
+- remove the main from package.json as it gives issue in the prod build. 
+- for prod build cmd: "npx parcel build index.html"     

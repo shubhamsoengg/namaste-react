@@ -1,4 +1,7 @@
-const child = React.createElement("h2", { id: "child" }, "I am h2 tag");
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+const child = React.createElement("h2", { id: "child" }, "I am h2 tag!!");
 const sibling = React.createElement("h2", { id: "sibling" }, "I am a sibling");
 const parent = React.createElement("div", { id: "parent" }, [child, sibling]);
 
