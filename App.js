@@ -1,17 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import Header from "./components/Header";
+import Body from "./components/Body";
 
-const Title = () => {
-  return <h1>Title of the header component</h1>;
-};
-const HeadingComponent = () => {
+/* 
+    
+*/
+const AppLayout = () => {
   return (
-    <div className="container">
-      <Title />
-      <h2>Content of the header</h2>
+    <div className="app">
+      <Header />
+      <Body />
     </div>
   );
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<HeadingComponent />);
+root.render(<AppLayout />);

@@ -1,0 +1,22 @@
+# Notes
+
+- Config driven UI
+- reconciliation
+- react fibre
+
+## Food ordering app
+    
+    ### Planning phase: 
+        Header: 
+            Logo
+            Links: home, about, cart, sign in
+        Body: 
+            search bar
+            Restaurant cards
+                Image, location, title, cuisines, rating
+            filtering, searching, sorting
+            restaurant upon clickng
+                menu
+        Footer: 
+            copyright, some links
+        
