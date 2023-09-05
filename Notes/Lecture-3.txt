@@ -1,0 +1,15 @@
+# Notes
+
+- instead of writing "npx parcel index.html" to build the project, we can add a script to the package.json,
+    saying that `start: "parcel index.html" `. 
+- Now we just have to run "npm start" or "npm run start" to build the project. 
+- jsx is not technically javascript. Js engine cannot understand it. Babel converts it into js 
+- React.createElement => React element (js object) => HTML element (render)
+- JSX => React.createElement => React element (js object) => HTML element (render)
+- Babel also deals with newer js incompatible with older browser. 
+- jsx escapes data from a malicious apis. 
+
+Component: 
+- Class based - old way of writing code
+- functional component - new way of writing code. 
+
