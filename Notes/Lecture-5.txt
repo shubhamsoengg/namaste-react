@@ -17,10 +17,16 @@ There are 2 most important hooks:
     - as arguments, we can pass values as [], null or [{data for 1 restaurant}] 
     - the way to set it is to use another variable. const [resList, setResList] = useState ([])
     - how to update?? --> setResList(newResList)
+    - how can a const variable get update??? -> When we call setResList(), the whole component is rerendered, where the new resList is 
+        assigned the new value. So its not like we are modifying the const, we are just assigning a different value on load. 
 
-
-2. useEffect()
-
+2. useEffect(): 
+    - takes 2 arguments
+    - 1st argument is a callback function, 2nd is a dependency array. 
+    - useEffect( () => {
+        console.log("this callback function will be called after the render cycle is finished")
+    }, [])
+    - if we have to do something after the component renders, write it inside useEffect.
 
 # Why is react fast?? 
 - React uses reconciliation algorithm. Also known as react fiber. 

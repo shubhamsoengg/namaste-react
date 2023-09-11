@@ -1,0 +1,23 @@
+# Notes
+
+## Monolith Architecture: 
+- All the code is in 1 big repository
+
+## Microservice Architecture: 
+- different service for different jobs. 
+- 1 backend service, 1 UI project, 1 auth service, 1 db service etc. 
+- All these services combined together forms a big app. 
+- this is known as separation of concern or single responsbility principle. 
+- how do these services interact with each other??
+- Different services can be written in different languages. 
+
+
+- types of api calling: 
+    - load -> Call Api -> Render
+    - loads -> Render -> API -> rerender (better UX)
+- when you call the swiggy api, the cors error will occur. this is basically our browser preventing us to access the other api. 
+- we can use a chrome extension to get past this. 
+- Add a shimmer UI or a loader while the API is fetching the data. 
+- Use conditional rendering for early returns etc. 
+
+

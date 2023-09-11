@@ -8,7 +8,6 @@ export default function RestaurantCard({
   avgRating,
   cuisines,
 }) {
-  console.log(cuisines);
   return (
     <div className="restaurant-card">
       <img

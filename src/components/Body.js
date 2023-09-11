@@ -1,19 +1,60 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
-import { restaurantData } from "../utils/mockData";
+import { SWIGGY_API } from "../utils/constants";
 
 export default function Body() {
-  return (
+  const [originalResList, setOriginalResList] = useState([]);
+  const [restaurantList, setRestaurantlist] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  useEffect(() => {
+    fetchRestaurantData();
+  }, []);
+
+  const fetchRestaurantData = async () => {
+    const response = await fetch(SWIGGY_API);
+    const restaurantData = await response.json();
+    setRestaurantlist(
+      restaurantData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+    setOriginalResList(
+      restaurantData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+  };
+
+  const updateRestaurantList = (searchInfo) => {
+    console.log(searchInfo);
+    const updatedResList = originalResList.filter((restaurant) =>
+      restaurant.info.name.toLowerCase().includes(searchInfo.toLowerCase())
+    );
+    setRestaurantlist(updatedResList);
+  };
+
+  return restaurantList.length === 0 ? (
+    <>Shimmer UI...</>
+  ) : (
     <div className="app-body">
-      <div className="searchbar">Search</div>
+      <div className="searchbar">
+        <input
+          type="text"
+          className="search-box"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        />
+        <button
+          className="search-btn"
+          onClick={() => updateRestaurantList(searchText)}
+        >
+          Search
+        </button>
+      </div>
       <div className="resturant-container">
-        {restaurantData.data.cards[5].card.card.gridElements.infoWithStyle.restaurants.map(
-          (restaurant) => {
-            return (
-              <RestaurantCard key={restaurant.info.id} {...restaurant.info} />
-            );
-          }
-        )}
+        {restaurantList.map((restaurant) => {
+          return (
+            <RestaurantCard key={restaurant.info.id} {...restaurant.info} />
+          );
+        })}
       </div>
     </div>
   );
