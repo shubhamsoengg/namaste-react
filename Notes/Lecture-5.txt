@@ -1,0 +1,28 @@
+# Notes
+
+- In one file we can have only 1 default export 
+- but we can have multiple named exports. 
+- For named exports (data from constants.js) : export const CDN_URL = "www.xyz.com";  
+- whenever a state variable changes, react rerenders the component.  
+- the update part is what is extremely expensive, and where react is very very good. 
+
+# Hooks: 
+
+There are 2 most important hooks: 
+1. useState()
+    - import {useState} from 'react'
+    - imported as a named import
+    - returns an array
+    - const [listRestaurants] = useState();
+    - as arguments, we can pass values as [], null or [{data for 1 restaurant}] 
+    - the way to set it is to use another variable. const [resList, setResList] = useState ([])
+    - how to update?? --> setResList(newResList)
+
+
+2. useEffect()
+
+
+# Why is react fast?? 
+- React uses reconciliation algorithm. Also known as react fiber. 
+- Virtual DOM: not the actual DOM, representation of the actual DOM. The components are basically virtual DOMs. its a JS object. 
+- Diff algorithm: Finds out the difference between the updated virtual DOM and the previous virtual DOM. 
