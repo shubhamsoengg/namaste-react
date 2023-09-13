@@ -1,0 +1,45 @@
+# Notes
+
+- useEffect: 
+    - No dependency Array: 
+        if we have no dependency array, this is called after every render of the component,  i.e. useEffect(()=> {}); 
+    - Empty dependency array: 
+        useEffect(() => {}, []); => then the useEffect is called on initial render and just once. 
+    - Non Empty dependency array: 
+        It will only be called when the dependency changes =>  useEffect(() => {}, [stateVariable]);
+
+- Never use useState outside of your component function.
+- Try to call the hooks on the top. 
+- never create a state variable inside if else condition or for loops or gneric functions. Can lead to inconsistency with program. 
+
+
+# React routers: 
+- the first thing is to create the routing configurations using "createBrowseRouter" at the app level
+        const appRouter = createBrowserRouter([
+            {
+                path: "/",
+                element: <AppLayout />,
+                errorElement: <Error />,    // for error paths redirect to this component. 
+            },
+            {
+                path: "about",
+                element: <About />,
+            },
+        ]);
+- After this we need to provide this configuration using "RouterProvider". 
+    root.render(<RouterProvider router={appRouter}/>);
+- useRouteError: react-router-dom hook that gives detailed info for routing errors. 
+        data: "Error: No route matches URL \"/wdasd\""
+        error: Error: No route matches URL "/wdasd" at getInternalRouterError (http://localhost:1234/index.7271efb6.js:33317:57) at createRouter (http://localhost:1234/index.7271efb6.js:31172:21) at createBrowserRouter (http://localhost:1234/index.7271efb6.js:27996:37) at 2kQhy.react/jsx-dev-runtime (http://localhost:1234/index.7271efb6.js:2983:59) at newRequire (http://localhost:1234/index.7271efb6.js:71:24) at http://localhost:1234/index.7271efb6.js:122:5 at http://localhost:1234/index.7271efb6.js:145:3
+        internal: true
+        status: 404
+        statusText: "Not Found"
+
+## What if we need to make header and footer constant and just change the body. 
+- We have to create children routes. "children" is a list of paths. We use "Outlet" to display the children based on route. 
+- Now we also need to activate the links for which we use Link component. 
+
+- Server side routing: 
+    When we fetch the page from the server. like google.com
+- Client Side routing: 
+    In the single page application, all the content is loaded in the page which makes getting different pages much faster. 

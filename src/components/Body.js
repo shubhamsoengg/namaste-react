@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import { SWIGGY_API } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 export default function Body() {
   const [originalResList, setOriginalResList] = useState([]);
@@ -52,7 +53,12 @@ export default function Body() {
       <div className="resturant-container">
         {restaurantList.map((restaurant) => {
           return (
-            <RestaurantCard key={restaurant.info.id} {...restaurant.info} />
+            <Link
+              to={"restaurantMenu/" + restaurant.info.id}
+              key={restaurant.info.id}
+            >
+              <RestaurantCard {...restaurant.info} />
+            </Link>
           );
         })}
       </div>
