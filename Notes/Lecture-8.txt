@@ -1,0 +1,56 @@
+# Notes: 
+
+## Class based components: 
+
+-   import React from "react";
+    class UserClass extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                count: 0,
+                cards: [] 
+            }
+        }
+
+        render () {
+            const {name, age} = this.props;
+            return <div>
+                {this.props.name}
+                {age}
+                {this.state.count}
+            </div>
+        }
+    }
+    export default UserClass;
+
+
+- Never update state variables directly
+- Use this.setState instead. => this.setState({
+    count : this.state.count + 1
+})
+- Behind the scene react will find out which state has changed and only take that into account
+
+## Lifecycle methods: 
+
+- ComponentDidMount => to make api calls
+-first constructor is called => then render is called => ComponentDidMount is called
+- parent constructor => parent render => child constructor => child render => child ComponentDidMount => parent ComponentDidMount
+- react lifecycle diagram website
+- react batches the render phase 1st then calls the ComponentDidMount at the end even for all the children
+
+### there are a lot of things which we need to clear when we leave the page for which we use "componentWillUnmount"
+- there are also some cons of SPA
+- if there is a set interval counter in one component, even if we go to the other component, it will still keep n running 
+- if we go to that component again, timer will start running twice !!!
+- We need to clearInterval in componentWillUnmount
+
+- to mimic the same in useEffect we use something called as return inside useEffect
+
+useEffect (()=> {
+    const timer = setInterval(()=>clg("counter"));
+    return () => {
+        console.log("this is where you clean things up. this is similar to componentWillUnmount")
+        clearInterval(timer); 
+    }
+}, [])
+ 

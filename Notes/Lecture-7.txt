@@ -37,7 +37,8 @@
 
 ## What if we need to make header and footer constant and just change the body. 
 - We have to create children routes. "children" is a list of paths. We use "Outlet" to display the children based on route. 
-- Now we also need to activate the links for which we use Link component. 
+- Now we also need to activate the links for which we use Link component.
+- for dynamic routing : /restaurantMenu/:id 
 
 - Server side routing: 
     When we fetch the page from the server. like google.com
