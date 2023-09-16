@@ -18,6 +18,9 @@ export default function Header() {
           <Link to="/about"> About Us </Link>
         </li>
         <li>
+          <Link to="/lazyComponent"> LazyLoadedComponent </Link>
+        </li>
+        <li>
           <Link to="/contact"> Contact Us</Link>
         </li>
         <li>Cart</li>

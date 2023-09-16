@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import { SWIGGY_API } from "../utils/constants";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 export default function Body() {
   const [originalResList, setOriginalResList] = useState([]);
   const [restaurantList, setRestaurantlist] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const userIsOnline = useOnlineStatus();
+
   useEffect(() => {
     fetchRestaurantData();
   }, []);
@@ -31,6 +34,10 @@ export default function Body() {
     );
     setRestaurantlist(updatedResList);
   };
+
+  if (!userIsOnline) {
+    return <h1>You ar offline. Please check your internet connection</h1>;
+  }
 
   return restaurantList.length === 0 ? (
     <>Shimmer UI...</>

@@ -1,0 +1,38 @@
+# Notes
+
+## Custom hooks
+- Hook to fetch the menu data. take out the fetch data logic and put inside this hook. 
+- Write custom hooks in the utils folder as they are normal utility functions or helper functions. 
+- Always start the name with "use". As react then knows it is a hook. 
+- keep different files for different hooks. 
+- just like you have state variables inside components, you can have state variables inside hooks. 
+- When ever you want to create a custom hook, finalize the contract first, which means what is the input and what is the output. 
+
+- there is an online event listener. which checks whether we are online or offline. 
+- simulate offline experience --> go to the network tab and change "no throttling" to offline. 
+- you can maybe have a small game while the user is offline. 
+
+# CHUNKING !!!: 
+- Also called as code splitting, dynamic bundling, lazy loading, on-demand loading.
+- break down application in to smaller chunks or small bundles. 
+- logical separation of bundles. 
+
+- **** to do this, we do the following ****
+- import {lazy} from "react"
+- Lets says there is a grocery component with a lot of child components and which we want to lazy load. 
+- instead of importing normally we import it like this. 
+- const Grocery = lazy(()=> import ("./components/Grocery"));
+- and we put it simply in the children in the createBrowser router and the links the usual way. 
+- The above code will generate a different module for Groceries, but it will throw an error on the page. 
+- this is because there is some time taken to load the groceries and in that middle state where we don't have anything, it throws an error. 
+
+- To solve this, we use something called as "Suspense". 
+- import {Suspense} from "react";
+- Just wrap the component in Suspense and give it a placeholder called as fallback. This is the intermediate state which can be 
+loaded.(LIKE SHIMMER!!)
+-   {
+        path: /grocery,
+        element: <Suspense fallback={<h1>Show this in the intermediate state. Can be shimmer</h1>} > 
+                    <Grocery /> 
+                 </Suspense>
+    }
